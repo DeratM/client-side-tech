@@ -6,7 +6,9 @@ footer{
     background-color: #d1c4e9;
 }
 
-
+small{
+    font-size: 17px;
+}
 
 
 
@@ -21,5 +23,9 @@ footer{
 
 
 @media (min-width: 992px) { 
+
+   #hisp p{
+        margin-right:62%;
+    }
 
  }
