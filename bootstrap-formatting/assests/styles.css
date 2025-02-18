@@ -1,0 +1,35 @@
+header{
+    background-color: #9575cd;
+}
+
+footer{
+    background-color: #d1c4e9;
+}
+
+small{
+    font-size: 17px;
+}
+
+nav{
+    background-color: #5133a5;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 992px) { 
+
+   #hisp p{
+        margin-right:62%;
+    }
+
+ }
