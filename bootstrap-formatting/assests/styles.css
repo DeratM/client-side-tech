@@ -14,7 +14,20 @@ nav{
     background-color: #5133a5;
 }
 
+#alberto{
+    height: 119.34px;
+    width: 119.34px;
+}
 
+#buffet{
+    height: 119.34px;
+    width: 119.34px;
+}
+
+#form{
+    border-width: 3px;
+    border-color:black;
+}
 
 
 
@@ -28,8 +41,13 @@ nav{
 
 @media (min-width: 992px) { 
 
-   #hisp p{
-        margin-right:62%;
+    #form{
+        padding-left: 20%;
+        padding-right:20%;
+    }
+
+    button{
+        margin: 17%;
     }
 
  }
