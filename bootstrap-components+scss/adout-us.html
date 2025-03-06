@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ristorante Con Fusion: About Us</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="assests/styles.css" rel="stylesheet">
+    <link href="assests/css/styles.css" rel="stylesheet">
+
 
 </head>
 
@@ -63,6 +64,14 @@
 
                 </ul>
             </div>
+            <a class="icon-link text-white p-1" data-bs-toggle="modal" data-bs-target="#login">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"/>
+                    <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+                  </svg>
+                  login
+              </a>
+
         </div>
     </nav>
 
@@ -79,6 +88,50 @@
                     <img src="assests/imgs/image.png" class="p-lg-5 ps-5 mt-lg-5" alt="logo">
                 </div>
 
+                <!-- login Modal -->
+                <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <form class="row row-cols-lg-auto g-3 align-items-center">
+                                <div class="col-12">
+                                  <label class="visually-hidden" for="inlineFormInputGroupUsername">Email</label>
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Enter Email">
+                                  </div>
+                                </div>
+                              
+                                <div class="col-12">
+                                  <label class="visually-hidden" for="inlineFormSelectPref">Password</label>
+                                  <div class="input-group">
+                                  <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Password">
+                                </div>
+                                </div>
+                              
+                                <div class="col-12">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="inlineFormCheck">
+                                    <label class="form-check-label" for="inlineFormCheck">
+                                      Remember me
+                                    </label>
+                                  </div>
+                                </div>
+                              </form>
+                       
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Sign In</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
                 <div class="col-lg-2 p-5 mt-lg-5  ">
                 <!-- Button trigger modal -->
                     <button type="button" class="text-nowrap btn btn-warning mt-5 px-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -86,17 +139,17 @@
                     </button>
   
                 <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
+                <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg ">
+                    <div class="modal-content ">
+                        <div class="modal-header bg-primary">
                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Reserve a Table</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
 
-                        <div class="modal-body">
+                        <div class="modal-body ">
                             <!-- Begining -->
-                            <section id="form" class="container ">
+                            <section id="form" class="container">
 
                                 <div >
                 
@@ -206,7 +259,6 @@
                     <h2 class="px-5 row order-1 col-lg-2">Our Lipsmacking Culinary Creations</h2>
                 </div>
                     
-               
 
                 <div class="row py-5">
                     <h2 class="row-1 col-lg-2 me-5">This Month's Promotions</h2>
@@ -238,6 +290,8 @@
 
 
     </div>
+
+    
 
     <footer class="footer">
         <div class="container">
@@ -331,7 +385,7 @@
         </div>
     </footer>
     
-<script src="assests/scripts.js"></script>
+<script src="assests/javascript/scripts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
