@@ -1,0 +1,24 @@
+.dishes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.dish-card {
+  border: 2px solid #eee;
+  border-radius: 10px;
+  padding: 15px;
+  width: 250px;
+}
+
+.dish-card img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.label {
+  background-color: red;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
