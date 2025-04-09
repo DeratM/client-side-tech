@@ -1,15 +1,20 @@
 {
+  "name": "client-side-tech",
+  "version": "1.0.0",
+  "private": true,
   "dependencies": {
-    "bootstrap": "^5.3.3",
+    "bootstrap": "4.0.0",
     "bootstrap-social": "5.1.1",
-<<<<<<< HEAD
     "font-awesome": "4.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1",
+    "react-scripts": "5.0.1",
     "reactstrap": "^9.2.3"
-=======
-    "font-awesome": "4.7.0"
->>>>>>> d64cf9ec75bf5da0bfdc88a295b11a5db5ae4892
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   }
 }

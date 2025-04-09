@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import Main from './components/MainComponent';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported
 
-class App extends Component {
-    render() {
-        return (
-            <div className="App">
-                <Main />
-            </div>
-        );
-    }
+function App() {
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <Main />
+      </div>
+    </BrowserRouter>
+  );
 }
 
 export default App;

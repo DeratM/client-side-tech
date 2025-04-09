@@ -1,23 +1,31 @@
 import React from 'react';
-import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardBody, CardTitle, CardText } from 'reactstrap';
 
 function RenderMenuItem({ dish, onClick }) {
     return (
-        <Card onClick={() => onClick(dish.id)}>
-            <CardImg width="100%" src={dish.image} alt={dish.name} />
-            <CardImgOverlay>
-                <CardTitle>{dish.name}</CardTitle>
-            </CardImgOverlay>
-        </Card>
+        <div className="col-12 col-md-5 m-1">
+            <Card onClick={() => onClick(dish.id)}>
+                <CardImg width="100%" src={dish.image} alt={dish.name} />
+                <CardBody>
+                    <CardTitle>{dish.name}</CardTitle>
+                    <CardText>{dish.description}</CardText>
+                    <CardText>{dish.price}</CardText>
+                </CardBody>
+            </Card>
+        </div>
     );
 }
 
 const Menu = (props) => {
-    const menu = props.dishes.map((dish) => (
-        <div className="col-12 col-md-5 m-1" key={dish.id}>
-            <RenderMenuItem dish={dish} onClick={props.onClick} />
-        </div>
-    ));
+    const menu = props.dishes.map((dish) => {
+        return (
+            <RenderMenuItem
+                key={dish.id}
+                dish={dish}
+                onClick={props.onClick}
+            />
+        );
+    });
 
     return (
         <div className="container">
