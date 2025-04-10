@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
+import { Loading } from './LoadingComponent'; // Import Loading
 
 function RenderDish({ dish }) {
     if (dish != null) {
@@ -13,12 +14,12 @@ function RenderDish({ dish }) {
             </Card>
         );
     } else {
-        return <div></div>;
+        return <div>No Dish Available</div>;
     }
 }
 
 function RenderComments({ comments }) {
-    if (comments && comments.length) {
+    if (comments && comments.length > 0) {
         return (
             <div className="col-12 col-md-5 m-1">
                 <h4>Comments</h4>
@@ -33,13 +34,36 @@ function RenderComments({ comments }) {
             </div>
         );
     } else {
-        return <div></div>;
+        return <div>No comments yet.</div>;
     }
 }
 
 const DishDetail = (props) => {
-    if (!props.dish) {
-        return <div></div>;
+    // UseEffect is optional here; if you need to fetch comments or dishes on mount
+    useEffect(() => {
+        // You can use useEffect to dispatch actions if needed
+    }, []);
+
+    if (props.isLoading) {  // Check if loading
+        return (
+            <div className="container">
+                <div className="row">
+                    <Loading />
+                </div>
+            </div>
+        );
+    }
+    else if (props.errMess) {  // Check if there's an error
+        return (
+            <div className="container">
+                <div className="row">
+                    <h4>{props.errMess}</h4>
+                </div>
+            </div>
+        );
+    }
+    else if (props.dish == null) {
+        return <div>No dish available</div>;
     }
 
     return (

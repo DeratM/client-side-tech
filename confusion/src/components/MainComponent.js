@@ -1,79 +1,100 @@
-import React, { Component } from 'react'; 
+import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { fetchDishes } from '../redux/ActionCreators';
 import Menu from './MenuComponent';
 import DishDetail from './DishdetailComponent';
-import Home from './HomeComponent';  
+import Home from './HomeComponent';
 import Contact from './ContactComponent';
-
-import { DISHES } from '../shared/dishes';  // Importing the DISHES data
-import { COMMENTS } from '../shared/comments';
-import { PROMOTIONS } from '../shared/promotions';
-import { LEADERS } from '../shared/leaders';
-
+import About from './AboutComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
+import { withRouter } from 'react-router-dom'; // Ensure this is imported
 
 class Main extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            dishes: DISHES, // Storing DISHES data in the state
-            comments: COMMENTS,
-            promotions: PROMOTIONS,
-            leaders: LEADERS,
-            selectedDish: null
-        };
+  componentDidMount() {
+    this.props.fetchDishes();
+  }
+
+  // handleDishClick will navigate to DishDetail page using history.push
+  handleDishClick = (dishId) => {
+    this.props.history.push(`/menu/${dishId}`); // Redirect to the specific dish detail page
+  };
+
+  render() {
+    const { dishes, isLoading, errMess, comments, promotions, leaders } = this.props;
+
+    if (isLoading) {
+      return <div>Loading...</div>;
     }
 
-    onDishSelect(dishId) {
-        this.setState({ selectedDish: dishId });
+    if (errMess) {
+      return <div>{errMess}</div>;
     }
 
-    render() {
-        const selectedDish = this.state.dishes.find(dish => dish.id === this.state.selectedDish);
-        const selectedComments = this.state.comments.filter(comment => comment.dishId === this.state.selectedDish);
+    const featuredDish = dishes.dishes.filter((dish) => dish.featured)[0];
+    const featuredPromotion = promotions.filter((promo) => promo.featured)[0];
+    const featuredLeader = leaders.filter((leader) => leader.featured)[0];
 
-        const HomePage = () => {
-            return (
-                <Home
-                    dish={this.state.dishes.filter((dish) => dish.featured)[0]}
-                    promotion={this.state.promotions.filter((promo) => promo.featured)[0]}
-                    leader={this.state.leaders.filter((leader) => leader.featured)[0]}
+    return (
+      <div>
+        <Header />
+        <Switch>
+          <Route
+            path="/home"
+            render={() => (
+              <Home
+                dish={featuredDish}
+                promotion={featuredPromotion}
+                leader={featuredLeader}
+              />
+            )}
+          />
+          <Route exact path="/contactus" component={Contact} />
+          <Route exact path="/aboutus" component={About} />
+          <Route
+            exact
+            path="/menu"
+            render={() => (
+              <Menu
+                dishes={dishes.dishes}
+                onClick={this.handleDishClick} 
+              />
+            )}
+          />
+          <Route
+            path="/menu/:dishId"
+            render={({ match }) => {
+              const dishId = parseInt(match.params.dishId, 10);
+              const selectedDish = dishes.dishes.find((dish) => dish.id === dishId);
+              const selectedComments = comments.filter((comment) => comment.dishId === dishId);
+              return (
+                <DishDetail
+                  dish={selectedDish}
+                  comments={selectedComments}
                 />
-            );
-        };
-
-        return (
-            <div>
-                <Header />
-                
-                <Switch>
-                    <Route path="/home" render={HomePage} />
-                    <Route exact path='/contactus' component={Contact} /> 
-                    <Route 
-                        exact 
-                        path="/menu" 
-                        component={() => 
-                            <Menu 
-                                dishes={this.state.dishes} 
-                                onClick={(dishId) => this.onDishSelect(dishId)} 
-                            />} 
-                    />
-                    <Route 
-                        path="/menu/:dishId" 
-                        component={() => 
-                            <DishDetail 
-                                dish={selectedDish} 
-                                comments={selectedComments} 
-                            />} 
-                    />
-                    <Redirect to="/home" />
-                </Switch>
-
-                <Footer />
-            </div>
-        );
-    }
+              );
+            }}
+          />
+          <Redirect to="/home" />
+        </Switch>
+        <Footer />
+      </div>
+    );
+  }
 }
 
-export default Main;
+const mapStateToProps = (state) => ({
+  dishes: state.dishes,
+  comments: state.comments,
+  promotions: state.promotions,
+  leaders: state.leaders,
+  isLoading: state.dishes.isLoading,
+  errMess: state.dishes.errMess,
+});
+
+const mapDispatchToProps = {
+  fetchDishes,
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
