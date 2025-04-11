@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';  // Import the Link component from react-router-dom
+import { Link } from 'react-router-dom';  
 
 function Footer(props) {
     return (
@@ -9,7 +9,7 @@ function Footer(props) {
                     <div className="col-4 offset-1 col-sm-2">
                         <h5>Links</h5>
                         <ul className="list-unstyled">
-                            {/* Use Link components instead of <a> for internal navigation */}
+                           
                             <li><Link to="/home">Home</Link></li>
                             <li><Link to="/about">About</Link></li>
                             <li><Link to="/menu">Menu</Link></li>

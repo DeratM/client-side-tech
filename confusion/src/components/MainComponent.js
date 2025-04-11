@@ -9,16 +9,16 @@ import Contact from './ContactComponent';
 import About from './AboutComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
-import { withRouter } from 'react-router-dom'; // Ensure this is imported
+import { withRouter } from 'react-router-dom';
+import { actions } from 'react-redux-form';
 
 class Main extends Component {
   componentDidMount() {
     this.props.fetchDishes();
   }
 
-  // handleDishClick will navigate to DishDetail page using history.push
   handleDishClick = (dishId) => {
-    this.props.history.push(`/menu/${dishId}`); // Redirect to the specific dish detail page
+    this.props.history.push(`/menu/${dishId}`);
   };
 
   render() {
@@ -50,7 +50,13 @@ class Main extends Component {
               />
             )}
           />
-          <Route exact path="/contactus" component={Contact} />
+          <Route
+            exact
+            path="/contactus"
+            component={() => (
+              <Contact resetFeedbackForm={this.props.resetFeedbackForm} />
+            )}
+          />
           <Route exact path="/aboutus" component={About} />
           <Route
             exact
@@ -58,7 +64,7 @@ class Main extends Component {
             render={() => (
               <Menu
                 dishes={dishes.dishes}
-                onClick={this.handleDishClick} 
+                onClick={this.handleDishClick}
               />
             )}
           />
@@ -93,8 +99,9 @@ const mapStateToProps = (state) => ({
   errMess: state.dishes.errMess,
 });
 
-const mapDispatchToProps = {
-  fetchDishes,
-};
+const mapDispatchToProps = (dispatch) => ({
+  fetchDishes: () => dispatch(fetchDishes()),
+  resetFeedbackForm: () => dispatch(actions.reset('feedback'))
+});
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

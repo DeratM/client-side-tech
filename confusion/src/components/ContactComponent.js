@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
-
+import { connect } from 'react-redux';  
+import { addComment } from '../redux/ActionCreators';  
 class Contact extends Component {
     constructor(props) {
         super(props);
@@ -31,6 +32,10 @@ class Contact extends Component {
     handleSubmit(event) {
         console.log('Current State is: ' + JSON.stringify(this.state));
         alert('Current State is: ' + JSON.stringify(this.state));
+
+        
+        this.props.addComment(this.state);  
+
         event.preventDefault();
     }
 
@@ -174,25 +179,14 @@ class Contact extends Component {
                         </Form>
                     </div>
                 </div>
-
-                {/* Contact Info Buttons */}
-                <div className="col-12 col-sm-11 offset-sm-1">
-                    <div className="btn-group" role="group">
-                        <a role="button" className="btn btn-primary" href="tel:+85212345678">
-                            <i className="fa fa-phone"></i> Call
-                        </a>
-                        {/* Skype Button */}
-                        <button type="button" className="btn btn-info">
-                            <i className="fa fa-skype"></i> Skype
-                        </button>
-                        <a role="button" className="btn btn-success" href="mailto:confusion@food.net">
-                            <i className="fa fa-envelope-o"></i> Email
-                        </a>
-                    </div>
-                </div>
             </div>
         );
     }
 }
 
-export default Contact;
+
+const mapDispatchToProps = {
+    addComment: (comment) => addComment(comment)  
+};
+
+export default connect(null, mapDispatchToProps)(Contact);

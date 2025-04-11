@@ -1,7 +1,7 @@
 import * as ActionTypes from './ActionTypes';
 
 export const Dishes = (state = { isLoading: true, errMess: null, dishes: [] }, action) => {
-    console.log(action); // Add logging to see what actions are being dispatched
+    console.log(action); 
     switch (action.type) {
         case ActionTypes.ADD_DISHES:
             return { ...state, isLoading: false, errMess: null, dishes: action.payload };

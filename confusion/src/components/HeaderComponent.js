@@ -29,13 +29,12 @@ class Header extends Component {
   
   
   handleLogin(event) {
-    event.preventDefault(); // Prevent form submission (refresh)
-    this.toggleModal(); // Close the modal after submitting
-  
-    // Delay the alert so that the modal transition is allowed to complete
+    event.preventDefault(); 
+    this.toggleModal(); 
+    
     setTimeout(() => {
       alert("Username: " + this.username.value + " Password: " + this.password.value + " Remember: " + this.remember.checked);
-    }, 500); // Adjust delay if needed
+    }, 500); 
   }
   
 
@@ -68,7 +67,7 @@ class Header extends Component {
                     <span className="fa fa-address-card fa-lg"></span> Contact Us
                   </NavLink>
                 </NavItem>
-                {/* Add the Login Button to Navbar */}
+                
                 <NavItem>
                 <Button outline onClick={this.toggleModal}>
   <span className="fa fa-sign-in fa-lg"></span> Login
@@ -80,7 +79,7 @@ class Header extends Component {
           </div>
         </Navbar>
 
-        {/* Modal for Login Form */}
+       
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
           <ModalBody>
@@ -91,7 +90,7 @@ class Header extends Component {
                   type="text"
                   id="username"
                   name="username"
-                  ref={(input) => this.username = input}  // Use ref instead of innerRef
+                  ref={(input) => this.username = input}  
                 />
               </FormGroup>
               <FormGroup>
@@ -100,7 +99,7 @@ class Header extends Component {
                   type="password"
                   id="password"
                   name="password"
-                  ref={(input) => this.password = input}  // Use ref instead of innerRef
+                  ref={(input) => this.password = input}  
                 />
               </FormGroup>
               <FormGroup check>
@@ -108,7 +107,7 @@ class Header extends Component {
                   <Input
                     type="checkbox"
                     name="remember"
-                    ref={(input) => this.remember = input}  // Use ref instead of innerRef
+                    ref={(input) => this.remember = input}
                   />
                   Remember me
                 </Label>
@@ -118,7 +117,7 @@ class Header extends Component {
           </ModalBody>
         </Modal>
 
-        {/* Jumbotron - Ensure it's correctly used or remove if not needed */}
+        
         <Jumbotron>
           <div className="container">
             <div className="row row-header">

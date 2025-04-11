@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardImg, CardBody, CardTitle, CardText } from 'reactstrap';
 
-// Render individual menu items
+
 function RenderMenuItem({ dish, onClick }) {
   return (
     <div className="col-12 col-md-5 m-1">
@@ -27,7 +27,7 @@ const Menu = (props) => {
       <RenderMenuItem
         key={dish.id}
         dish={dish}
-        onClick={props.onClick} // Pass the onClick function from Main
+        onClick={props.onClick}
       />
     );
   });
